@@ -1,25 +1,21 @@
-name: action
+name: CPack
+
 on:
-  push:
-    branches:
-      - main
-jobs:
-  prototype_cont:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+ push:
+  branches: [main]
+ pull_request:
+  branches: [main]
 
-    - name: List files in workspace
-      run: ls -R ${{github.workspace}}
+jobs: 
+ build_Linux:
 
-    - name: Create .build directory
-      run: mkdir -p ${{github.workspace}}/build
+  runs-on: ubuntu-latest
 
-    - name: Build
-      run: cmake --build ${{github.workspace}}/build
+  steps:
+  - uses: actions/checkout@v4
 
-    - name: Run programm.cpp
-      run: ${{github.workspace}}/build/DecoratorPattern
+  - name: Configure example
+    run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
 
-    - name: Run tests
-      run: ${{github.workspace}}/build/tests
+  - name: Build example
+    run: cmake --build ${{github.workspace}}/build
