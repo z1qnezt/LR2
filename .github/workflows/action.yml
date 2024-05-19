@@ -1,21 +1,24 @@
-name: CPack
+name: action
 
 on:
- push:
-  branches: [main]
- pull_request:
-  branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs: 
- build_Linux:
+  build_Linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
 
-  runs-on: ubuntu-latest
+    - name: Set up GTest path
+      run: |
+        export GTEST_LIBRARY=/usr/lib/libgtest.a  # or the path to your GTest library
+        export GTEST_INCLUDE_DIR=/usr/include/gtest  # or the path to your GTest include directory
 
-  steps:
-  - uses: actions/checkout@v4
+    - name: Configure example
+      run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
 
-  - name: Configure example
-    run: cmake ${{github.workspace}} -B ${{github.workspace}}/build
-
-  - name: Build example
-    run: cmake --build ${{github.workspace}}/build
+    - name: Build example
+      run: cmake --build ${{github.workspace}}/build
