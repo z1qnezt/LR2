@@ -1,5 +1,0 @@
-/Users/mihailerosenko/z1qnezt/workspace/LR2/build/CMakeFiles/DecoratorPattern.dir
-/Users/mihailerosenko/z1qnezt/workspace/LR2/build/CMakeFiles/tests.dir
-/Users/mihailerosenko/z1qnezt/workspace/LR2/build/CMakeFiles/test.dir
-/Users/mihailerosenko/z1qnezt/workspace/LR2/build/CMakeFiles/edit_cache.dir
-/Users/mihailerosenko/z1qnezt/workspace/LR2/build/CMakeFiles/rebuild_cache.dir
