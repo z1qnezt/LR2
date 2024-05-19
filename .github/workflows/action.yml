@@ -4,15 +4,16 @@ on:
     branches:
       - main
 jobs:
-  build:
+  prototype_cont:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up CMake
-    - name: Configure CMake
-      run: cmake -S . -B build
-    - name: Build
-      run: cmake --build build --config Release
-    - name: Run Tests
-      run: ./build/tests
+    - uses: actions/checkout@v4
 
+    - name: Build
+      run: cmake --build ${{github.workspace}}/.build
+
+    - name: Run programm.cpp
+      run: ${{github.workspace}}/.build/DecoratorPattern
+
+    - name: Run tests
+      run: ${{github.workspace}}/.build/tests
